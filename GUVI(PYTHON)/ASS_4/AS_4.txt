@@ -1,0 +1,16 @@
+from tinker import*
+window=TK()
+window.title('address form') 
+frm_form=Frame(relief=sunken,borderwidth=5)
+frm_form.pack()
+font=('DM sans',15)
+labels=['first name','last name','aadhar card no','pan card no','city','state']
+for idx,items in enumerate(labels):
+lbl=label(master=frm_form,text=items)
+ent=entry(master=frm_form,width=100)
+lbl.grid(row=indx,column=0,sticky='e')
+ent.grid(row=indx,column=1,sticky='e')
+bth_clr=button(master=frm_bth,text='clear')
+bth_sbm=button(master=frm_bth,text='submit')
+bth_sbm.pack(side=right)
+bth_clr.pack(side=right)

@@ -1,0 +1,29 @@
+import json
+import requests
+
+# Alpha Vantage API endpoint and API key
+AV_ENDPOINT = "https://www.alphavantage.co/query"
+AV_API_KEY = "YOUR_API_KEY_HERE"
+
+# Function to get the latest stock price for a given symbol
+def get_stock_price(symbol):
+    params = {
+        "function": "GLOBAL_QUOTE",
+        "symbol": symbol,
+        "apikey": AV_API_KEY
+    }
+    response = requests.get(AV_ENDPOINT, params=params)
+    data = json.loads(response.content)
+    if "Global Quote" in data:
+        price = float(data["Global Quote"]["05. price"])
+        return price
+    else:
+        return None
+
+# Example usage: get the latest stock price for Apple
+aapl_price = get_stock_price("AAPL")
+if aapl_price:
+    print(f"The latest stock price for AAPL is ${aapl_price:.2f}")
+else:
+    print("Failed to get the stock price for AAPL")
+

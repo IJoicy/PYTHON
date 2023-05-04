@@ -1,0 +1,36 @@
+import math
+
+def calculator():
+    print("Welcome to the calculator app!")
+    print("Enter 'q' to quit.")
+    while True:
+        try:
+            num1 = float(input("Enter the first number: "))
+            op = input("Enter the operator (+, -, *, /, sin, cos, tan): ")
+            if op == 'sin' or op == 'cos' or op == 'tan':
+                if op == 'sin':
+                    result = math.sin(math.radians(num1))
+                elif op == 'cos':
+                    result = math.cos(math.radians(num1))
+                elif op == 'tan':
+                    result = math.tan(math.radians(num1))
+                print(f"{op}({num1}) = {result}")
+            else:
+                num2 = float(input("Enter the second number: "))
+                if op == '+':
+                    result = num1 + num2
+                elif op == '-':
+                    result = num1 - num2
+                elif op == '*':
+                    result = num1 * num2
+                elif op == '/':
+                    result = num1 / num2
+                print(f"{num1} {op} {num2} = {result}")
+        except ValueError:
+            if op == 'q':
+                print("Goodbye!")
+                break
+            else:
+                print("Invalid input. Please try again.")
+
+calculator()
